@@ -24,6 +24,8 @@ Docker does not currently have official support for several enabling technologie
 * Security Configuration Tool
 * Trusted Connections (i.e. Windows Auth) for SQL Server databases
 
+The current solution works with ODS/API version 2.3.1, 2.4.0, 2.5.1. It has not been tested on ODS/API version 2.6.0. Technical Suite 3 versions are known to not work due to problems with database initialization.
+
 ## Contributing
 
 Looking for an easy way to get started? Search for tickets with label
