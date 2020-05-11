@@ -1,0 +1,59 @@
+version: '3'
+services:
+  web-api:
+    build: .
+    env_file: 
+      - EdFi.Ods.WebApi.env
+    image: "edfi-web-api"
+    ports: 
+      - "${WEB_API_PORT}:443"
+    environment:
+      - CONNSTR_Edfi_Ods=Database=EdFi_{0}; Data Source=${DATABASE_HOST}; Integrated Security=False;User Id=${DATABASE_LOGIN};Password=${DATABASE_PASSWORD};MultipleActiveResultSets=True;
+      - CONNSTR_Edfi_Admin=Database=EdFi_Admin; Data Source=${DATABASE_HOST}; Integrated Security=False;User Id=${DATABASE_LOGIN};Password=${DATABASE_PASSWORD};MultipleActiveResultSets=True;
+      - CONNSTR_Edfi_Security=Database=EdFi_Security; Data Source=${DATABASE_HOST}; Integrated Security=False;User Id=${DATABASE_LOGIN};Password=${DATABASE_PASSWORD};MultipleActiveResultSets=True;
+      - CONNSTR_Edfi_master=Database=master; Data Source=${DATABASE_HOST}; Integrated Security=False;User Id=${DATABASE_LOGIN};Password=${DATABASE_PASSWORD};MultipleActiveResultSets=True;
+      - CONNSTR_BulkOperationDbContext=Database=EdFi_Bulk; Data Source=${DATABASE_HOST}; Integrated Security=False;User Id=${DATABASE_LOGIN};Password=${DATABASE_PASSWORD};MultipleActiveResultSets=True;
+      - CERT_FILE_NAME
+      - CERT_PASSWORD
+    volumes:
+      - ${CERT_PATH}:C:\cert
+      - ${API_LOG_PATH}:C:\ProgramData\Ed-Fi-ODS-API
+
+  swagger-ui:
+    env_file: 
+      - EdFi.Ods.SwaggerUI.env
+    image: "edfi-swagger-ui"
+    ports: 
+      - "${SWAGGER_UI_PORT}:443"
+    environment:  
+      - APPSETTING_swagger.webApiMetadataUrl=https://localhost:${WEB_API_PORT}/metadata/{section}/api-docs
+      - CERT_FILE_NAME
+      - CERT_PASSWORD
+    volumes:
+      - ${CERT_PATH}:C:\cert
+
+  admin-web:
+    env_file: 
+      - EdFi.Ods.Admin.Web.env
+    image: "edfi-admin-web"
+    ports: 
+      - "${ADMIN_WEB_PORT}:443"
+    environment:
+      - APPSETTING_OAuthUrl=https://localhost:${WEB_API_PORT}/oauth/
+      - CONNSTR_Edfi_Ods=Database=EdFi_{0}; Data Source=${DATABASE_HOST}; Integrated Security=False;User Id=${DATABASE_LOGIN};Password=${DATABASE_PASSWORD};MultipleActiveResultSets=True;
+      - CONNSTR_Edfi_Admin=Database=EdFi_Admin; Data Source=${DATABASE_HOST}; Integrated Security=False;User Id=${DATABASE_LOGIN};Password=${DATABASE_PASSWORD};MultipleActiveResultSets=True;
+      - CONNSTR_Edfi_Security=Database=EdFi_Security; Data Source=${DATABASE_HOST}; Integrated Security=False;User Id=${DATABASE_LOGIN};Password=${DATABASE_PASSWORD};MultipleActiveResultSets=True;
+      - CONNSTR_Edfi_master=Database=master; Data Source=${DATABASE_HOST}; Integrated Security=False;User Id=${DATABASE_LOGIN};Password=${DATABASE_PASSWORD};MultipleActiveResultSets=True;
+      - CONNSTR_BulkOperationDbContext=Database=EdFi_Bulk; Data Source=${DATABASE_HOST}; Integrated Security=False;User Id=${DATABASE_LOGIN};Password=${DATABASE_PASSWORD};MultipleActiveResultSets=True;
+      - CONNSTR_UniqueIdIntegrationContext=Database=UniqueId; Data Source=${DATABASE_HOST}; Integrated Security=False;User Id=${DATABASE_LOGIN};Password=${DATABASE_PASSWORD};MultipleActiveResultSets=True;
+      - CERT_FILE_NAME
+      - CERT_PASSWORD
+    volumes:
+      - ${CERT_PATH}:C:\cert
+      - ${ADMIN_LOG_PATH}:C:\ProgramData\Ed-Fi-ODS-Admin
+
+networks:
+  default:
+    external:
+      name: nat
+

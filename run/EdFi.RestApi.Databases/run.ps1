@@ -1,0 +1,1 @@
+docker run -m 4g -p 1433:1433 --name edfi-db -v "$PSScriptRoot\data:C:\SQL" --env InstallType=Sandbox --env ACCEPT_EULA=Y --env sa_password=EdFiODS2018 edfi-restapi-database

@@ -1,0 +1,1 @@
+docker run -d -p 8002:80 -p 8102:443 --name edfi-admin-web --env-file EdFi.Ods.Admin.Web.env -v "$PSScriptRoot\cert:C:\cert" -v "$PSScriptRoot\logs:C:\ProgramData\Ed-Fi-ODS-Admin" --env CERT_FILE_NAME=certificate.pfx edfi-admin-web -d

@@ -1,0 +1,17 @@
+version: '3'
+services:
+  edfi-db:
+    image: "edfi-restapi-database:${TAG}"
+    ports: 
+      - "${DATABASE_PORT}:1433"
+    environment:
+      - sa_password=${SA_PASSWORD}
+      - ACCEPT_EULA=Y
+      - InstallType=${INSTALL_TYPE}
+    volumes:
+      - ${DATA_FOLDER}:C:\SQL
+
+networks:
+  default:
+    external:
+      name: nat

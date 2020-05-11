@@ -1,0 +1,9 @@
+nupkg/
+build/
+feed/
+run/**/*.yml
+run/**/*.bat
+run/**/*.env
+run/**/*.mdf
+run/**/*.ldf
+nuget.exe

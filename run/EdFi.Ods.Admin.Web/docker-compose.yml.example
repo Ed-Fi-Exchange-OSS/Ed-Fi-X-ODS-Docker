@@ -1,0 +1,21 @@
+version: '3'
+services:
+  app:
+    build: .
+    env_file: 
+      - EdFi.Ods.Admin.Web.env
+    image: "edfi-admin-web:${TAG}"
+    ports: 
+      - "8002:80"
+      - "8102:443"
+    environment:
+      - CERT_FILE_NAME
+      - CERT_PASSWORD
+    volumes:
+      - ${CERT_PATH}:C:\cert
+      - ${LOG_PATH}:C:\ProgramData\Ed-Fi-ODS-Admin
+
+networks:
+  default:
+    external:
+      name: nat
