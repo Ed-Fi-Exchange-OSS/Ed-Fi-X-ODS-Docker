@@ -26,13 +26,6 @@ Docker does not currently have official support for several enabling technologie
 
 The current solution works with ODS/API version 2.3.1, 2.4.0, 2.5.1. It has not been tested on ODS/API version 2.6.0. Technical Suite 3 versions are known to not work due to problems with database initialization.
 
-## Contributing
-
-Looking for an easy way to get started? Search for tickets with label
-"up-for-grabs" in Tracker **[Link that text to a pre-existing query for the
-project]**; these are nice-to-have but low priority tickets that should not
-require in-depth knowledge of the code base and architecture.
-
 ## Legal Information
 
 Copyright (c) 2020 Ed-Fi Alliance, LLC and contributors.
