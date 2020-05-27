@@ -1,30 +1,46 @@
 # Ed-Fi ODS Deploy for Docker
 
-Dockerfiles for running the ODS/API in Docker
+Dockerfiles for running the ODS/API in Docker.
 
 For more information, see:
 
-* [Deploying Ed-Fi with Docker Containers](https://techdocs.ed-fi.org/display/EXCHANGE/Deploying+Ed-Fi+with+Docker+Containers)
-* [How to Submit an Issue](https://techdocs.ed-fi.org/display/ETKB/How+To%3A+Submit+an+Issue)
-* [How Submit a Feature Request](https://techdocs.ed-fi.org/display/ETKB/How+To%3A+Submit+a+Feature+Request)
-* Review on-going development work at [Tracker](https://tracker.ed-fi.org/browse/EXC)
+* [Deploying Ed-Fi with Docker
+  Containers](https://techdocs.ed-fi.org/display/EXCHANGE/Deploying+Ed-Fi+with+Docker+Containers)
+* [How to Submit an
+  Issue](https://techdocs.ed-fi.org/display/ETKB/How+To%3A+Submit+an+Issue)
+* [How Submit a Feature
+  Request](https://techdocs.ed-fi.org/display/ETKB/How+To%3A+Submit+a+Feature+Request)
+* Review on-going development work at
+  [Tracker](https://tracker.ed-fi.org/browse/EXC)
 * [User guide](user-guide.md)
 
 ## Overview
 
-This distribution contains a set of tools for building and deploying Docker containers for ODS Web Api, Swagger UI and Admin Web. While there is a configuration called "production", use of these sample configurations in production is not recommended - in particular because SQL Server 2017 in containers is not yet fully supported by Microsoft.
+This distribution contains a set of tools for building and deploying Docker
+containers for ODS Web Api, Swagger UI and Admin Web. While there is a
+configuration called "production", use of these sample configurations in
+production is not recommended - in particular because SQL Server 2017 in
+containers is not yet fully supported by Microsoft.
 
-These scripts are provided as-is, but the Alliance welcomes feedback on additions or changes that would make these resources more user friendly. Feedback is best shared by raising a ticket on the Ed-Fi Tracker [Exchange Contributions Project](https://tracker.ed-fi.org/projects/EXC).
+These scripts are provided as-is, but the Alliance welcomes feedback on
+additions or changes that would make these resources more user friendly.
+Feedback is best shared by raising a ticket on the Ed-Fi Tracker [Exchange
+Contributions Project](https://tracker.ed-fi.org/projects/EXC).
 
 ## Limitations
 
-Docker does not currently have official support for several enabling technologies used by the Ed-Fi ODS, including accessing an Active Directory Domain and MSMQ.  Therefore, the following items are not included in this distribution:
+Docker does not currently have official support for several enabling
+technologies used by the Ed-Fi ODS, including accessing an Active Directory
+Domain and MSMQ.  Therefore, the following items are not included in this
+distribution:
 
 * Bulk Load Services
 * Security Configuration Tool
 * Trusted Connections (i.e. Windows Auth) for SQL Server databases
 
-The current solution works with ODS/API version 2.3.1, 2.4.0, 2.5.1. It has not been tested on ODS/API version 2.6.0. Technical Suite 3 versions are known to not work due to problems with database initialization.
+The current solution works with ODS/API version 2.3.1, 2.4.0, 2.5.1. It has not
+been tested on ODS/API version 2.6.0. Technical Suite 3 versions are known to
+not work due to problems with database initialization.
 
 ## Legal Information
 
